@@ -1,3 +1,4 @@
+
 // SIDEBAR DROPDOWN
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
@@ -122,4 +123,36 @@ window.addEventListener('click', function (e) {
 const allProgress = document.querySelectorAll('main .card .progress');
 allProgress.forEach(item=> {
 	item.style.setProperty('--value', item.dataset.value)
+})
+
+
+import { filtrarAño,
+        filtrarActor,
+        filtrarimdb
+} from "./report.js";
+
+let nav =document.querySelector(".container")
+let años = document.querySelector("#años")
+años.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+console.log(":(");
+nav.append(await filtrarAño())
+})
+
+let actor = document.querySelector("#actor")
+actor.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+console.log(":(");
+nav.append(await filtrarActor())
+})
+
+
+let imdb = document.querySelector("#imdb")
+imdb.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+console.log(":(");
+nav.append(await filtrarimdb())
 })
