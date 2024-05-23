@@ -1,6 +1,10 @@
 import { años,
         actores,
-        imdb
+        imdb,
+        titulo,
+        imdbAndTitulo,
+        urlyobject,
+        all
 } from "./components/webcomponents.js";
 
 //export const filtrarAño{
@@ -13,6 +17,10 @@ import { años,
 customElements.define("mis-años" , años)
 customElements.define("mis-actores" , actores)
 customElements.define("mis-imdb" , imdb)
+customElements.define("mis-titulos" , titulo)
+customElements.define("mis-imdbandtitulo" , imdbAndTitulo)
+customElements.define("mis-urlyobject" , urlyobject)
+customElements.define("mis-all" , all)
 
 
 export const filtrarAño = async(e)=>{
@@ -33,3 +41,30 @@ export const filtrarimdb = async(e)=>{
     nav.innerHTML = ""
     nav.innerHTML = `<mis-imdb></mis-imdb>`
 }
+
+export const filtrartitulo = async(e)=>{
+    let nav = document.querySelector(".container");
+    nav.innerHTML = ""
+    nav.innerHTML = `<mis-titulos></mis-titulos>`
+}
+
+
+export const filtrarimdbAndTitulo = async(e)=>{
+    let nav = document.querySelector(".container");
+    nav.innerHTML = ""
+    nav.innerHTML = `<mis-imdbandtitulo></mis-imdbandtitulo>`
+}
+
+
+export const filtrarurlyobject = async(e)=>{
+    let nav = document.querySelector(".container");
+    nav.innerHTML = ""
+    nav.innerHTML = `<mis-urlyobject></mis-urlyobject>`
+}
+
+export const filtrarall = async(e)=>{
+    let nav = document.querySelector(".container");
+    nav.innerHTML = ""
+    nav.innerHTML = `<mis-all></mis-all>`
+}
+

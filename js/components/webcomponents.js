@@ -136,6 +136,182 @@ export  class imdb extends HTMLElement{
     
 }
 
+export  class titulo extends HTMLElement{
+    constructor(){
+    super()
+    this.attachShadow({mode: "open"});
+    }
+    connectedCallback(){
+    this.anos();
+    }
+    async anos(){
+        const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
+        const data = await bdata.json();
+        this.renderData(data);
+    }
+    renderData(data){
+        const style=`<link rel="stylesheet" href="css/components.css">
+        <script type="module" src="webcomponents.js" async></script>
+        `
+        let content = `${style}`
+        content +=`
+        <div class="consulta">
+            <h2>títulos de todas las películas</h2>
+        </div>
+        `
+        let dic=data.description
+        console.log("f", dic)
+        dic.forEach  ( val =>  {
+            //console.log("X",val["#ACTORS"])
+            content += `
+            <div class="contenido">
+                <div class="opc">
+                    <ul>
+                        <li><a href="#" onclick="buscarAño('${val["#TITLE"]}') class="años">${val["#TITLE"]}</a></li>
+                    </ul>
+                </div>
+            </div>
+            `
+        })
+        let nav =document.querySelector(".container")
+        nav.innerHTML = content
+
+    }
+    
+}
+
+export  class imdbAndTitulo extends HTMLElement{
+    constructor(){
+    super()
+    this.attachShadow({mode: "open"});
+    }
+    connectedCallback(){
+    this.anos();
+    }
+    async anos(){
+        const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
+        const data = await bdata.json();
+        this.renderData(data);
+    }
+    renderData(data){
+        const style=`<link rel="stylesheet" href="css/components.css">
+        <script type="module" src="webcomponents.js" async></script>
+        `
+        let content = `${style}`
+        content +=`
+        <div class="consulta">
+            <h2>Consulta los identificadores y títulos de todas las películas.</h2>
+        </div>
+        `
+        let dic=data.description
+        console.log("f", dic)
+        dic.forEach  ( val =>  {
+            //console.log("X",val["#ACTORS"])
+            content += `
+            <div class="contenido">
+                <div class="opc">
+                    <ul>
+                    <li><a href="#" onclick="buscarAño('${val["#imdbAndTitulo"]}') class="años">${val["#RANK"]} y ${val["#TITLE"]}</a></li>
+                    </ul>
+                </div>
+            </div>
+            `
+        })
+        let nav =document.querySelector(".container")
+        nav.innerHTML = content
+
+    }
+    
+}
+
+export  class urlyobject extends HTMLElement{
+    constructor(){
+    super()
+    this.attachShadow({mode: "open"});
+    }
+    connectedCallback(){
+    this.anos();
+    }
+    async anos(){
+        const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
+        const data = await bdata.json();
+        this.renderData(data);
+    }
+    renderData(data){
+        const style=`<link rel="stylesheet" href="css/components.css">
+        <script type="module" src="webcomponents.js" async></script>
+        `
+        let content = `${style}`
+        content +=`
+        <div class="consulta">
+            <h2>URL completas y los tipos de objetos</h2>
+        </div>
+        `
+        let dic=data.description
+        console.log("f", dic)
+        dic.forEach  ( val =>  {
+            //console.log("X",val["#ACTORS"])
+            content += `
+            <div class="contenido">
+                <div class="opc">
+                    <ul>
+                    <li><a href="#" onclick="buscarAño('${val["#IMDB_URL"]}') class="años">${val["#IMDB_URL"]} y ${val["#AKA"]}</a></li>
+                    </ul>
+                </div>
+            </div>
+            `
+        })
+        let nav =document.querySelector(".container")
+        nav.innerHTML = content
+
+    }
+    
+}
+
+export  class all extends HTMLElement{
+    constructor(){
+    super()
+    this.attachShadow({mode: "open"});
+    }
+    connectedCallback(){
+    this.anos();
+    }
+    async anos(){
+        const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
+        const data = await bdata.json();
+        this.renderData(data);
+    }
+    renderData(data){
+        const style=`<link rel="stylesheet" href="css/components.css">
+        <script type="module" src="webcomponents.js" async></script>
+        `
+        let content = `${style}`
+        content +=`
+        <div class="consulta">
+            <h2>URL completas y los tipos de objetos</h2>
+        </div>
+        `
+        let dic=data.description
+        console.log("f", dic)
+        dic.forEach  ( val =>  {
+            //console.log("X",val["#ACTORS"])
+            content += `
+            <div class="contenido">
+                <div class="opc">
+                    <ul>
+                    <li><a href="#" onclick="buscarAño('${val["#IMDB_URL"]}') class="años">${val["#TITLE"]}, ${val["#YEAR"]} y ${val["#IMDB_IV"]} </a></li>
+                    </ul>
+                </div>
+            </div>
+            `
+        })
+        let nav =document.querySelector(".container")
+        nav.innerHTML = content
+
+    }
+    
+}
+
 
 export async  function buscarAño(año){
     const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 

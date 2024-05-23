@@ -128,7 +128,11 @@ allProgress.forEach(item=> {
 
 import { filtrarAño,
         filtrarActor,
-        filtrarimdb
+        filtrarimdb,
+        filtrartitulo,
+        filtrarimdbAndTitulo,
+        filtrarurlyobject,
+        filtrarall
 } from "./report.js";
 
 let nav =document.querySelector(".container")
@@ -144,7 +148,6 @@ let actor = document.querySelector("#actor")
 actor.addEventListener("click", async(e)=>{
 e.preventDefault();
 nav.innerHTML = "";
-console.log(":(");
 nav.append(await filtrarActor())
 })
 
@@ -153,6 +156,33 @@ let imdb = document.querySelector("#imdb")
 imdb.addEventListener("click", async(e)=>{
 e.preventDefault();
 nav.innerHTML = "";
-console.log(":(");
 nav.append(await filtrarimdb())
+})
+
+let titulo = document.querySelector("#titulo")
+titulo.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+nav.append(await filtrartitulo())
+})
+
+let imdbAndTitulo = document.querySelector("#imdbAndTitulo")
+imdbAndTitulo.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+nav.append(await filtrarimdbAndTitulo())
+})
+
+let urlyobject = document.querySelector("#urlyobject")
+urlyobject.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+nav.append(await filtrarurlyobject())
+})
+
+let all = document.querySelector("#all")
+all.addEventListener("click", async(e)=>{
+e.preventDefault();
+nav.innerHTML = "";
+nav.append(await filtrarall())
 })
