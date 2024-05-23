@@ -186,3 +186,26 @@ e.preventDefault();
 nav.innerHTML = "";
 nav.append(await filtrarall())
 })
+
+export async  function buscarAño(año){
+    console.log("hii")
+    const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
+    const data = await bdata.json();
+    let dic=data.description
+        console.log("f", dic)
+        dic.forEach(val =>{
+            if (año == val["#YEAR"]){
+            const style=`<link rel="stylesheet" href="css/components.css">`
+            let content = `${style}`
+            content +=`
+            <div class="consulta">
+                <h2>pelicula</h2>
+                <p>Titulo: ${val["#TITLE"]}</p>
+                <p>Year: ${val["#YEAR"]}</p>
+                <p>Actors: ${val["#ACTORS"]}</p>
+                <img src="${val["#IMG_POSTER"]}" alt="">
+            </div>
+            `
+            }
+        })
+}

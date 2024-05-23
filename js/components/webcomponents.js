@@ -4,6 +4,28 @@ async function  data(){
     return data
 }
 
+export async  function buscarAño(año){
+    console.log("hii")
+    const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
+    const data = await bdata.json();
+    let dic=data.description
+        console.log("f", dic)
+        dic.forEach(val =>{
+            if (año == val["#YEAR"]){
+            const style=`<link rel="stylesheet" href="css/components.css">`
+            let content = `${style}`
+            content +=`
+            <div class="consulta">
+                <h2>pelicula</h2>
+                <p>Titulo: ${val["#TITLE"]}</p>
+                <p>Year: ${val["#YEAR"]}</p>
+                <p>Actors: ${val["#ACTORS"]}</p>
+                <img src="${val["#IMG_POSTER"]}" alt="">
+            </div>
+            `
+            }
+        })
+}
 
 export  class años extends HTMLElement{
     constructor(){
@@ -21,6 +43,7 @@ export  class años extends HTMLElement{
     renderData(data){
         const style=`<link rel="stylesheet" href="css/components.css">
         <script type="module" src="webcomponents.js" async></script>
+        <script type="module" src="../js/main.js" async></script>
         `
         let content = `${style}`
         content +=`
@@ -36,7 +59,7 @@ export  class años extends HTMLElement{
             <div class="contenido">
                 <div class="opc">
                     <ul>
-                        <li><a href="#" onclick="buscarAño('${val["#YEAR"]}') class="años">${val["#YEAR"]}</a></li>
+                        <li><a href="#" onclick="buscarAño(${val["#YEAR"]})" class="años">${val["#YEAR"]}</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,6 +71,9 @@ export  class años extends HTMLElement{
     }
     
 }
+
+
+
 
 export  class actores extends HTMLElement{
     constructor(){
@@ -313,24 +339,3 @@ export  class all extends HTMLElement{
 }
 
 
-export async  function buscarAño(año){
-    const bdata = await fetch("https://search.imdbot.workers.dev/?q=Niram") 
-    const data = await bdata.json();
-    let dic=data.description
-        console.log("f", dic)
-        dic.forEach(val =>{
-            if (año == val["#YEAR"]){
-            const style=`<link rel="stylesheet" href="css/components.css">`
-            let content = `${style}`
-            content +=`
-            <div class="consulta">
-                <h2>pelicula</h2>
-                <p>titulo: ${val["#TITLE"]}</p>
-                <p>titulo: ${val["#YEAR"]}</p>
-                <p>titulo: ${val["#ACTORS"]}</p>
-                <img src="${val["#IMG_POSTER"]}" alt="">
-            </div>
-            `
-            }
-        })
-}
