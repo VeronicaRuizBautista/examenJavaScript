@@ -25,6 +25,9 @@ export async  function buscarAño(año){
             `
             }
         })
+        let nav =document.querySelector(".container")
+        nav.innerHTML=""
+        nav.innerHTML = content
 }
 
 export  class años extends HTMLElement{
